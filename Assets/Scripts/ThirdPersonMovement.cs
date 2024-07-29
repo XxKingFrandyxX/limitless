@@ -4,62 +4,29 @@ using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
-    float forwardDirection;
-    float sideDirection;
+    public CharacterController controller;
     public Transform cam;
-    Vector3 camForward;
-    public float rotationSpeed = 180;
-    Vector3 move;
-    CharacterController cc;
-    public float moveSpeed = 4;
-    public float jumpSpeed = 10.0f;
-    public float gravityMultiplier = 3;
-    float verticalVelocity = 0;
 
-    void Inputs()
+    public float speed = 6f;
+
+    public float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity;
+
+    // Update is called once per frame
+    void Update()
     {
-        forwardDirection = Input.GetAxis("Vertical");
-        sideDirection = Input.GetAxis("Horizontal");
-    }
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-    void Start()
-    {
-        cc = GetComponent<CharacterController>();
-
-        if (cam == null)
-            {
-                cam = Camera.main.transform;
-            }
-    }
-
-    void Rotation()
-    {
-        camForward = Vector3.Scale(cam.forward, new Vector3(1, 0, 1).normalized);
-        move = forwardDirection * camForward + sideDirection * cam.right;
-
-        move.Normalize();
-        move = transform.InverseTransformDirection(move);
-
-        float turnAmout = Mathf.Atan2(move.x, move.z);
-        transform.Rotate(0, turnAmout * rotationSpeed * Time.deltaTime, 0);
-    }
-
-    void Movement()    
-    {
-        Vector3 direction = transform.forward * move.z * moveSpeed;
-
-        if (cc.isGrounded)
+        if (direction.magnitude >= 0.1f)
         {
-            verticalVelocity = 0;
-        }
-        verticalVelocity += Physics.gravity.y * gravityMultiplier * Time.deltaTime;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-        if (Input.GetButtonDown("Jump") && cc.isGrounded)
-        {
-            verticalVelocity = jumpSpeed;
+            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDirection.normalized * speed * Time.deltaTime);
         }
-        direction.y = verticalVelocity;
-
-        cc.Move(direction * Time.deltaTime);
     }
 }
