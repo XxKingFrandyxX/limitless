@@ -11,6 +11,13 @@ public class BasicTeleport : MonoBehaviour
     {
         targetToTeleport.position = teleportLocation.position;
         targetToTeleport.rotation = teleportLocation.rotation;
+
+        Rigidbody targetRB = targetToTeleport.GetComponent<Rigidbody>();
+        if (targetRB != null)
+        {
+            targetRB.velocity = Vector3.zero;
+            targetRB.angularVelocity = Vector3.zero;
+        }
     }
 
     public void Update()
