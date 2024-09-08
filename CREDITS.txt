@@ -1,1 +1,3 @@
 https://assetstore.unity.com/packages/3d/environments/urban/city-package-107224
+https://assetstore.unity.com/packages/3d/props/ag-chess-set-low-poly-192162
+https://assetstore.unity.com/packages/3d/environments/landscapes/flatpoly-floating-islands-100809
