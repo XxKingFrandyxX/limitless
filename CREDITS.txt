@@ -7,3 +7,7 @@ https://assetstore.unity.com/packages/3d/environments/landscapes/flatpoly-floati
 https://assetstore.unity.com/packages/3d/environments/sci-fi/free-demo-of-low-poly-space-alien-worlds-3d-asset-pack-258683
 
 https://assetstore.unity.com/packages/templates/packs/infinity-square-space-procedurally-generated-space-with-a-destru-149923
+
+https://assetstore.unity.com/packages/2d/textures-materials/sky/midgard-skybox-273733
+
+https://assetstore.unity.com/packages/3d/characters/creatures/ghost-character-free-267003

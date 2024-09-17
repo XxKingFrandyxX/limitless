@@ -20,6 +20,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public Transform groundCheck;
 
+
+
     void Update()
     {
         // Check if the player is on the ground
@@ -30,6 +32,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
+
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -56,5 +59,28 @@ public class ThirdPersonMovement : MonoBehaviour
 
         // Move the character
         controller.Move(velocity * Time.deltaTime);
+
+        
+        if (GUI.Button(new Rect(0, 0, 100, 50), "lock Cursor"))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
+
+    
+    void OnGUI()
+    {
+        if (GUI.Button(new Rect(0, 0, 100, 50), "Lock Cursor"))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        //Press this button to confine the Cursor within the screen
+        if (GUI.Button(new Rect(125, 0, 100, 50), "Confine Cursor"))
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+    }
+
+
 }
