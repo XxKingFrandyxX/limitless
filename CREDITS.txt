@@ -11,3 +11,5 @@ https://assetstore.unity.com/packages/templates/packs/infinity-square-space-proc
 https://assetstore.unity.com/packages/2d/textures-materials/sky/midgard-skybox-273733
 
 https://assetstore.unity.com/packages/3d/characters/creatures/ghost-character-free-267003
+
+Music: NCS energy music
