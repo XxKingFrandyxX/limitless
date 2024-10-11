@@ -8,8 +8,13 @@ public class Startgame : MonoBehaviour
     public string LevelName;
 
     public void LoadLevel()
-    {
+    {   
         SceneManager.LoadScene(LevelName);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
   
 

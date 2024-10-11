@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 956661818}
   - component: {fileID: 956661817}
   - component: {fileID: 956661816}
+  - component: {fileID: 956661820}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -303,6 +304,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &956661820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956661815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091b6b876907ca040a5018fb0002aae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelName: Game
 --- !u!1 &1025928177
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +466,7 @@ GameObject:
   - component: {fileID: 1107627003}
   - component: {fileID: 1107627006}
   m_Layer: 5
-  m_Name: 'Button (Start) '
+  m_Name: ButtonStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,13 +537,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 091b6b876907ca040a5018fb0002aae5, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1107627006}
+        m_TargetAssemblyTypeName: Startgame, Assembly-CSharp
+        m_MethodName: LoadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -734,7 +748,7 @@ GameObject:
   - component: {fileID: 1358459770}
   - component: {fileID: 1358459769}
   m_Layer: 5
-  m_Name: Button (Quit)
+  m_Name: ButtonQuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -804,7 +818,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1358459770}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 956661820}
+        m_TargetAssemblyTypeName: Startgame, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Application.Quit();
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1358459770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1175,7 +1201,7 @@ Camera:
   m_GameObject: {fileID: 1717470819}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
