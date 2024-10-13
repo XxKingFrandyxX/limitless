@@ -7,8 +7,10 @@ public class BackToMenu : MonoBehaviour
 {
     public string LevelName;
 
-    public void LoadLevel()
-    {
+    private void OnTriggerEnter(){
         SceneManager.LoadScene(LevelName);
     }
+
+    //Loads the scene of your choice
+
 }
